@@ -1,0 +1,244 @@
+/* =========================================================
+   HISHAB — PREMIUM COMPACT CATEGORIES PAGE
+   ========================================================= */
+
+.category-page {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 10px 0 30px;
+    color: var(--text);
+}
+
+/* ===== হেডিং ===== */
+.category-heading h1 {
+    margin: 0 0 4px;
+    font-size: 1.6rem;
+    color: var(--text);
+}
+.category-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .92rem;
+}
+
+/* ===== মেইন প্যানেল ===== */
+.category-panel {
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+[data-theme="dark"] .category-panel {
+    background: linear-gradient(145deg, #101e39, #0b162d);
+}
+
+.category-panel-heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.category-count {
+    padding: 2px 10px;
+    border-radius: 20px;
+    color: var(--primary);
+    background: rgba(37, 99, 235, .12);
+    font-size: .85rem;
+    font-weight: 700;
+}
+
+/* ===== ফিল্টার ও সার্চ ===== */
+.category-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.category-filters {
+    display: flex;
+    gap: 6px;
+}
+.category-filter {
+    min-height: 32px;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text);
+    background: transparent;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+.category-filter:hover { border-color: var(--primary); }
+.category-filter.active {
+    color: #fff;
+    border-color: var(--primary);
+    background: var(--primary);
+}
+.category-search {
+    min-height: 32px;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--input-bg);
+    color: var(--text);
+    font-size: .85rem;
+    outline: none;
+    transition: .2s;
+}
+.category-search:focus { border-color: var(--primary); }
+
+/* ===== ক্যাটাগরি লিস্ট ===== */
+.category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.category-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    transition: .2s;
+}
+[data-theme="dark"] .category-row { background: rgba(255,255,255,.02); }
+.category-row:hover {
+    border-color: rgba(37, 99, 235, .4);
+    background: rgba(37, 99, 235, .04);
+}
+.category-row[hidden] { display: none !important; }
+
+.category-row-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.category-row-info strong {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--text);
+}
+.category-row-info small {
+    font-size: .78rem;
+    color: var(--muted);
+}
+
+/* ব্যাজ ও এডিট বাটন */
+.category-type-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: .75rem;
+    font-weight: 700;
+}
+.category-type-badge.income { color: var(--income); background: rgba(5,150,105,.12); }
+.category-type-badge.expense { color: var(--expense); background: rgba(225,29,72,.12); }
+
+.category-icon-btn {
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--primary);
+    background: transparent;
+    text-decoration: none;
+    font-size: .8rem;
+    font-weight: 600;
+    transition: .2s;
+}
+.category-icon-btn:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+/* ===== অ্যালার্ট মেসেজ ===== */
+.category-alert {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.category-alert-success { background: rgba(5,150,105,.1); color: var(--income); border: 1px solid rgba(5,150,105,.2); }
+.category-alert-error { background: rgba(225,29,72,.1); color: var(--expense); border: 1px solid rgba(225,29,72,.2); }
+.category-alert ul { margin: 0; padding-left: 20px; }
+
+/* =========================================================
+   প্রিমিয়াম টগল সুইচ (Income / Expense) — Modal-এর ভেতরে
+   ========================================================= */
+.category-type-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 6px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+}
+[data-theme="dark"] .category-type-switch {
+    background: rgba(255,255,255,.03);
+}
+
+.type-option {
+    position: relative;
+    margin: 0 !important;
+    cursor: pointer;
+}
+
+.type-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.type-option span {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all .2s ease;
+}
+
+.type-option b {
+    font-size: 1.1rem;
+}
+
+/* আয় (Income) সিলেক্ট করলে */
+.income-option input:checked + span {
+    color: var(--income);
+    border-color: rgba(5, 150, 105, 0.4);
+    background: rgba(5, 150, 105, 0.12);
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.15);
+}
+
+/* ব্যয় (Expense) সিলেক্ট করলে */
+.expense-option input:checked + span {
+    color: var(--expense);
+    border-color: rgba(225, 29, 72, 0.4);
+    background: rgba(225, 29, 72, 0.12);
+    box-shadow: 0 2px 8px rgba(225, 29, 72, 0.15);
+}
+
+/* ===== রেসপন্সিভ ডিজাইন ===== */
+@media (max-width: 768px) {
+    .category-panel { padding: 14px; }
+    .category-row { flex-wrap: wrap; }
+    .category-row-info { flex: 1 1 100%; }
+    .category-type-badge, .category-row-actions { margin-top: 4px; }
+    .category-toolbar { width: 100%; justify-content: space-between; }
+    .category-search { flex: 1; width: 100%; }
+}

@@ -1,0 +1,534 @@
+/* =====================================================
+   HISHAB - PREMIUM ACCOUNTS PAGE (Compact & Modal Fix)
+   ===================================================== */
+
+/* PAGE */
+.accounts-page {
+    width: 100%;
+}
+
+/* =====================================================
+   PAGE HERO
+   ===================================================== */
+.accounts-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: linear-gradient(110deg, var(--card) 0%, var(--card) 65%, rgba(37, 99, 235, .05) 100%);
+    box-shadow: var(--shadow);
+}
+[data-theme="dark"] .accounts-hero {
+    background: linear-gradient(145deg, #101e39, #0b162d);
+    border-color: #203657;
+}
+.accounts-hero-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.accounts-hero-indicator {
+    width: 6px;
+    min-width: 6px;
+    height: 52px;
+    border-radius: 20px;
+    background: var(--primary);
+}
+.accounts-hero h1 {
+    margin: 0;
+    font-size: 1.65rem;
+    font-weight: 850;
+    color: var(--text);
+}
+.accounts-hero p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: .92rem;
+}
+.accounts-add-btn {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 8px 20px;
+    border-radius: 12px;
+    font-size: .92rem;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(5, 150, 105, .18);
+}
+.add-symbol {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-right: 6px;
+}
+
+/* =====================================================
+   ALERTS
+   ===================================================== */
+.accounts-alert {
+    margin-bottom: 20px;
+}
+.accounts-alert ul {
+    margin: 0;
+    padding-left: 22px;
+}
+
+/* =====================================================
+   SUMMARY CARDS
+   ===================================================== */
+.accounts-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+}
+.summary-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 90px;
+    padding: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease;
+}
+[data-theme="dark"] .summary-card {
+    background: linear-gradient(145deg, #101e39, #0b162d);
+    border-color: #203657;
+}
+.summary-card:hover {
+    transform: translateY(-2px);
+}
+.summary-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+.summary-info span {
+    color: var(--muted);
+    font-size: .85rem;
+    font-weight: 600;
+}
+.summary-info strong {
+    color: var(--text);
+    font-size: 1.35rem;
+    font-weight: 850;
+    overflow-wrap: anywhere;
+}
+.summary-indicator {
+    width: 5px;
+    height: 40px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+.summary-blue { background: #2563eb; }
+.summary-green { background: #059669; }
+.summary-red { background: #e11d48; }
+.summary-purple { background: #7c3aed; }
+
+.summary-balance-card .summary-info strong {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+/* =====================================================
+   TABLE CARD
+   ===================================================== */
+.accounts-table-card {
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--card);
+}
+[data-theme="dark"] .accounts-table-card {
+    background: linear-gradient(145deg, #101e39, #0b162d);
+    border-color: #203657;
+}
+.accounts-table-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.accounts-table-heading h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--text);
+}
+.accounts-table-heading p {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-size: .85rem;
+}
+.account-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: rgba(37, 99, 235, .09);
+    color: var(--primary);
+    font-size: .8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+[data-theme="dark"] .account-count {
+    background: rgba(37, 99, 235, .2);
+    color: #60a5fa;
+}
+
+/* =====================================================
+   ACCOUNT TABLE (Compact)
+   ===================================================== */
+.accounts-table-wrap {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow-x: auto;
+}
+.account-table {
+    width: 100%;
+    min-width: 800px;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.account-table th {
+    padding: 12px 14px;
+    background: var(--bg);
+    color: var(--table-head-text);
+    font-size: .85rem;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+    border: none;
+}
+[data-theme="dark"] .account-table th {
+    background: #111f3b;
+    color: #cbd5e1;
+}
+.account-table th:first-child { border-top-left-radius: 11px; }
+.account-table th:last-child { border-top-right-radius: 11px; }
+
+.account-table td {
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: .88rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+    overflow-wrap: anywhere;
+}
+.account-table tbody tr {
+    background: var(--card);
+    transition: background .2s ease;
+}
+[data-theme="dark"] .account-table tbody tr {
+    background: transparent;
+}
+.account-table tbody tr:hover {
+    background: rgba(37, 99, 235, .03);
+}
+[data-theme="dark"] .account-table tbody tr:hover {
+    background: rgba(255, 255, 255, .02);
+}
+.account-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.account-inactive-row {
+    opacity: .65;
+}
+
+/* ACCOUNT NAME */
+.account-name strong {
+    color: var(--text);
+    font-size: .92rem;
+    font-weight: 750;
+    display: block;
+}
+.account-name small {
+    color: var(--muted);
+    font-size: .78rem;
+}
+.account-number {
+    font-weight: 600;
+    color: var(--muted);
+}
+.current-balance {
+    color: var(--primary);
+    font-size: .95rem;
+    font-weight: 850;
+    white-space: nowrap;
+}
+
+/* =====================================================
+   STATUS BADGES
+   ===================================================== */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: .75rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+.status-active { background: rgba(5, 150, 105, .12); color: #059669; }
+.status-inactive { background: rgba(100, 116, 139, .14); color: #64748b; }
+[data-theme="dark"] .status-active { background: rgba(5, 150, 105, .18); color: #6ee7b7; }
+[data-theme="dark"] .status-inactive { background: rgba(148, 163, 184, .13); color: #cbd5e1; }
+
+/* =====================================================
+   ACTION BUTTONS (Compact)
+   ===================================================== */
+.account-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+}
+.account-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    padding: 4px 10px;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: .76rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+.account-action-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(.94);
+}
+.edit-account-btn { background: var(--primary); }
+.deactivate-account-btn { background: var(--expense); }
+.activate-account-btn { background: var(--income); }
+
+/* =====================================================
+   EMPTY STATE
+   ===================================================== */
+.accounts-empty {
+    padding: 45px 20px;
+    text-align: center;
+}
+.accounts-empty h3 {
+    margin-bottom: 8px;
+    color: var(--text);
+}
+.accounts-empty p {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+/* =====================================================
+   PREMIUM MODAL (Fixed & Compact)
+   ===================================================== */
+.modal-overlay.accounts-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 99999;
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.accounts-modal-content {
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--card) !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+[data-theme="dark"] .accounts-modal-content {
+    background: #101e39 !important;
+    border-color: #203657 !important;
+}
+
+/* Modal Header */
+.accounts-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+.accounts-modal-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--text);
+}
+.accounts-modal-header p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+/* Close Button */
+.modal-close-btn {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba(225, 29, 72, .1);
+    color: var(--expense);
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: .2s ease;
+}
+.modal-close-btn:hover {
+    background: var(--expense);
+    color: white;
+}
+[data-theme="dark"] .modal-close-btn {
+    background: rgba(225, 29, 72, .2);
+}
+
+/* Modal Inputs */
+.accounts-modal-content .form-group {
+    margin-bottom: 14px;
+}
+.accounts-modal-content .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--text);
+    font-size: .88rem;
+    font-weight: 700;
+}
+.accounts-modal-content .form-group input {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 12px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-family: inherit;
+    font-size: .92rem;
+    outline: none;
+    transition: .2s;
+}
+[data-theme="dark"] .accounts-modal-content .form-group input {
+    background: #0f172a;
+}
+.accounts-modal-content .form-group input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Modal Buttons */
+.accounts-modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+}
+.accounts-modal-actions button {
+    flex: 1;
+    min-height: 42px;
+    font-size: .9rem;
+    border-radius: 9px;
+}
+.accounts-cancel-btn {
+    background: var(--muted) !important;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+.accounts-cancel-btn:hover {
+    background: #475569 !important;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1100px) {
+    .accounts-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .accounts-hero h1 { font-size: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+    .accounts-hero {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        gap: 16px;
+        border-radius: 14px;
+    }
+    .accounts-hero-indicator { height: 45px; }
+    .accounts-hero h1 { font-size: 1.35rem; }
+    .accounts-hero p { font-size: .82rem; }
+    .accounts-add-btn { width: 100%; }
+
+    .accounts-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+    .summary-card {
+        min-height: 80px;
+        padding: 12px;
+        border-radius: 12px;
+    }
+    .summary-info span { font-size: .75rem; }
+    .summary-info strong { font-size: 1.15rem; }
+    .summary-balance-card .summary-info strong { font-size: 1rem; }
+
+    .accounts-table-card { padding: 14px; border-radius: 14px; }
+    .accounts-table-heading { flex-direction: column; align-items: flex-start; margin-bottom: 12px; }
+    .accounts-table-heading h2 { font-size: 1.1rem; }
+    .account-count { font-size: .76rem; }
+
+    .account-table { min-width: 800px; }
+
+    .modal-overlay.accounts-modal { padding: 12px; }
+    .accounts-modal-content { padding: 18px; border-radius: 14px; }
+    .accounts-modal-header h2 { font-size: 1.15rem; }
+    .accounts-modal-actions { gap: 8px; }
+}
+
+@media (max-width: 360px) {
+    .accounts-summary { grid-template-columns: 1fr; }
+    .summary-card { min-height: 75px; }
+    .accounts-modal-content { padding: 14px; }
+}
+
+/* =====================================================
+   ACCESSIBILITY
+   ===================================================== */
+.account-action-btn:focus-visible,
+.modal-close-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}

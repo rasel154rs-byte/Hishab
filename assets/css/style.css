@@ -1,0 +1,740 @@
+/* =====================================================
+   HISHAB - PREMIUM PERSONAL FINANCE APP
+   Complete Responsive CSS
+===================================================== */
+
+/* =====================================================
+   01. KALPURUSH FONT
+===================================================== */
+@font-face {
+    font-family: "Kalpurush";
+    src: url("../fonts/Kalpurush.ttf") format("truetype");
+    font-display: swap;
+}
+
+/* =====================================================
+   02. THEME VARIABLES
+===================================================== */
+:root {
+    --bg: #f4f7fc;
+    --card: #ffffff;
+    --text: #172554;
+    --muted: #64748b;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --income: #059669;
+    --expense: #e11d48;
+    --transfer: #7c3aed;
+    --border: #e5eaf3;
+    --danger: #e11d48;
+    --radius: 16px;
+    --shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+    --input-bg: #f4f7fc;
+    --table-head: #f1f5fb;
+    --table-head-text: #475569;
+    --topbar-bg: rgba(255, 255, 255, .92);
+}
+
+[data-theme="dark"] {
+    --bg: #081329;
+    --card: #101e39;
+    --text: #f1f5ff;
+    --muted: #9aaccb;
+    --border: #203657;
+    --shadow: 0 8px 25px rgba(0, 0, 0, .2);
+    --input-bg: #0f172a;
+    --table-head: #111f3b;
+    --table-head-text: #cbd5e1;
+    --topbar-bg: rgba(8, 19, 41, .92);
+}
+
+/* =====================================================
+   03. RESET & BASIC
+===================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Kalpurush", "Noto Sans Bengali", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background .3s ease, color .3s ease;
+}
+
+[data-theme="dark"] body {
+    background: radial-gradient(ellipse at 80% 0%, #10234a 0%, transparent 40%),
+                linear-gradient(145deg, #050d20, #081329);
+    background-attachment: fixed;
+}
+
+button, input, select, textarea { font-family: inherit; }
+button { cursor: pointer; }
+a { color: var(--primary); text-decoration: none; transition: color .2s ease; }
+a:hover { color: var(--primary-hover); }
+img { max-width: 100%; }
+
+/* =====================================================
+   04. HEADINGS
+===================================================== */
+h1, h2, h3, h4 {
+    margin: 0 0 12px;
+    color: var(--text);
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -.5px;
+}
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.15rem; }
+
+/* =====================================================
+   05. CONTAINER
+===================================================== */
+.container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* =====================================================
+   06. PREMIUM HEADER & NAVBAR
+===================================================== */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--topbar-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+}
+
+.topbar-inner {
+    min-height: 58px; /* হেডারের উচ্চতা কমিয়ে আনা হলো */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: relative;
+    padding-top: 4px; /* প্যাডিং কমানো হলো */
+    padding-bottom: 4px;
+    flex-wrap: nowrap;
+}
+
+/* BRAND */
+.premium-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.05;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+.premium-brand-name {
+    font-size: 1.3rem; /* ব্র্যান্ডের সাইজ একটু ছোট করা হলো */
+    font-weight: 850;
+    color: var(--text);
+    letter-spacing: -.5px;
+}
+.premium-brand-subtitle {
+    font-size: 0.55rem; /* সাবটাইটেল আরও ছোট করা হলো */
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 1.2px;
+    margin-top: 1px;
+}
+
+/* NAVIGATION */
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: auto;
+    gap: 4px;
+    order: 2;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 6px 11px;
+    border-radius: 9px;
+    color: var(--muted);
+    font-size: .87rem;
+    font-weight: 650;
+    white-space: nowrap;
+    transition: all .2s ease;
+}
+
+.nav-link:hover {
+    background: rgba(37, 99, 235, .08);
+    color: var(--primary);
+}
+
+.nav-link.active {
+    background: rgba(37, 99, 235, .12);
+    color: var(--primary);
+    box-shadow: none;
+    font-weight: 750;
+}
+
+/* HEADER TOOLS */
+.topbar-tools {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    gap: 8px;
+    margin-left: 8px;
+    order: 3;
+}
+
+/* THEME BUTTON */
+.icon-btn {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+.icon-btn:hover { background: var(--border); }
+
+/* LANGUAGE SELECT */
+.lang-select {
+    height: 38px;
+    min-height: 38px;
+    padding: 5px 9px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: inherit;
+    font-size: .85rem;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+/* LOGOUT BUTTON */
+.premium-logout {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 6px 14px;
+    border-radius: 9px;
+    background: var(--danger);
+    color: #fff;
+    font-weight: 650;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+.premium-logout:hover {
+    background: #be123c;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* MOBILE MENU BUTTON */
+.menu-btn {
+    display: none;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+    padding: 7px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    order: 2;
+}
+
+/* =====================================================
+   07. MAIN CONTENT
+===================================================== */
+.main-content {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+/* =====================================================
+   08. CARDS
+===================================================== */
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+}
+[data-theme="dark"] .card {
+    background: linear-gradient(145deg, #101e39, #0b162d);
+    border-color: var(--border);
+}
+
+/* =====================================================
+   09. BUTTONS
+===================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: .95rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    min-height: 44px;
+    transition: all .2s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, .2);
+}
+.btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, .3);
+}
+.btn:active { transform: translateY(1px); }
+.btn-success { background: var(--income); box-shadow: 0 4px 12px rgba(5, 150, 105, .2); }
+.btn-success:hover { background: #047857; box-shadow: 0 6px 15px rgba(5, 150, 105, .3); }
+.btn-danger { background: var(--danger); box-shadow: 0 4px 12px rgba(225, 29, 72, .2); }
+.btn-danger:hover { background: #be123c; box-shadow: 0 6px 15px rgba(225, 29, 72, .3); }
+.btn-block { width: 100%; }
+
+/* =====================================================
+   10. FORMS
+===================================================== */
+.form-group { margin-bottom: 18px; }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: .9rem;
+    color: var(--muted);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--input-bg);
+    color: var(--text);
+    transition: all .2s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, .15);
+    background: var(--card);
+}
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus {
+    background: var(--input-bg);
+}
+.form-group textarea { resize: vertical; }
+
+/* =====================================================
+   11. TABLES
+===================================================== */
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+th {
+    background: var(--table-head);
+    font-weight: 700;
+    font-size: .9rem;
+    color: var(--table-head-text);
+}
+td {
+    font-size: .95rem;
+    color: var(--text);
+}
+[data-theme="dark"] th { border-color: var(--border); }
+.table-wrap tr:last-child td { border-bottom: none; }
+
+table .btn {
+    padding: 6px 12px !important;
+    font-size: .8rem !important;
+    min-height: 32px !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+
+/* =====================================================
+   12. ALERT MESSAGES
+===================================================== */
+.alert {
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+    font-weight: 600;
+    font-size: .95rem;
+}
+.alert-success { background: #ecfdf5; color: #065f46; border-color: var(--income); }
+.alert-error { background: #ffe4e6; color: #9f1239; border-color: var(--danger); }
+[data-theme="dark"] .alert-success { background: rgba(5, 150, 105, .15); color: #6ee7b7; }
+[data-theme="dark"] .alert-error { background: rgba(225, 29, 72, .15); color: #fda4af; }
+
+/* =====================================================
+   13. HELPER CLASSES
+===================================================== */
+.text-right { text-align: right; }
+.text-muted { color: var(--muted); }
+.mb-0 { margin-bottom: 0; }
+.d-flex { display: flex; }
+.gap-2 { gap: 8px; }
+.flex-wrap { flex-wrap: wrap; }
+.align-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+
+/* =====================================================
+   14. FOOTER
+===================================================== */
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 0;
+    text-align: center;
+    background: var(--card);
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* =====================================================
+   15. MODAL
+===================================================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+.modal-content {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 28px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
+    border: 1px solid var(--border);
+    animation: modalFadeIn .3s ease;
+}
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(30px) scale(.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* =====================================================
+   16. TABLET RESPONSIVE
+===================================================== */
+@media (max-width: 1100px) and (min-width: 851px) {
+    .topbar-inner { gap: 8px; }
+    .nav-link { padding: 8px 7px; font-size: .78rem; }
+    .topbar-tools { gap: 5px; margin-left: 3px; }
+}
+
+/* =====================================================
+   17. MOBILE RESPONSIVE
+===================================================== */
+@media (max-width: 850px) {
+    .container { padding: 14px; }
+    .topbar-inner { flex-wrap: wrap; gap: 8px; min-height: 62px; }
+    .premium-brand { margin-right: auto; }
+    .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        flex: 0 0 100%;
+        width: 100%;
+        order: 4;
+        gap: 3px;
+        margin: 7px 0 0;
+        padding: 10px 0 0;
+        border-top: 1px solid var(--border);
+    }
+    .nav-links.show, .nav-links.open { display: flex; }
+    
+    .nav-link {
+        justify-content: flex-start;
+        width: 100%;
+        min-height: 42px;
+        padding: 9px 13px;
+        font-size: .9rem;
+    }
+    
+    .topbar-tools { order: 3; margin-left: 0; gap: 6px; }
+    .main-content { padding-top: 22px; padding-bottom: 35px; }
+    .card { padding: 16px; border-radius: 12px; }
+    h1 { font-size: 1.3rem; }
+    h2 { font-size: 1.15rem; }
+    th, td { padding: 10px 12px; }
+    .table-wrap { border-radius: 8px; }
+}
+
+/* =====================================================
+   18. SMALL MOBILE
+===================================================== */
+@media (max-width: 420px) {
+    .container { padding-left: 12px; padding-right: 12px; }
+    .topbar-inner { column-gap: 6px; }
+    .premium-brand-name { font-size: 1.15rem; }
+    .topbar-tools { gap: 4px; }
+    .icon-btn, .lang-select { height: 35px; min-height: 35px; }
+    .icon-btn { width: 35px; min-width: 35px; }
+    .lang-select { padding: 4px 5px; font-size: .78rem; }
+    .premium-logout { min-height: 35px; padding: 5px 8px; font-size: .76rem; }
+    .menu-btn { width: 35px; height: 35px; min-width: 35px; min-height: 35px; }
+    .card { padding: 14px; }
+    .btn { padding: 9px 14px; }
+}
+
+/* =====================================================
+   19. ACCESSIBILITY & INTERACTION
+===================================================== */
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+
+/* =====================================================
+   PREMIUM CUSTOM CONFIRM MODAL
+   ===================================================== */
+.custom-confirm-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    animation: fadeIn 0.2s ease;
+}
+
+.custom-confirm-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+[data-theme="dark"] .custom-confirm-box {
+    background: linear-gradient(145deg, #101e39, #0b162d);
+    border-color: #203657;
+}
+
+.custom-confirm-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    background: rgba(225, 29, 72, 0.1);
+    color: var(--expense);
+}
+
+.custom-confirm-box h3 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    color: var(--text);
+    font-weight: 800;
+}
+
+.custom-confirm-box p {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.custom-confirm-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.custom-confirm-actions button {
+    flex: 1;
+    min-height: 44px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+
+.custom-confirm-cancel {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border) !important;
+}
+
+.custom-confirm-cancel:hover {
+    background: var(--border);
+}
+
+.custom-confirm-ok {
+    background: var(--expense);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.2);
+}
+
+.custom-confirm-ok:hover {
+    background: #be123c;
+    transform: translateY(-1px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.9) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+
+/* =====================================================
+   GLOBAL PREMIUM PAGE HEADER (সব পেজের জন্য একই ডিজাইন)
+===================================================== */
+.premium-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px; /* প্যাডিং কমানো হলো */
+    margin-top: 24px; /* টপবার থেকে সঠিক দূরত্ব */
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: linear-gradient(110deg, var(--card) 0%, var(--card) 65%, rgba(37, 99, 235, .05) 100%);
+    box-shadow: var(--shadow);
+}
+[data-theme="dark"] .premium-page-header {
+    background: linear-gradient(145deg, #101e39, #0b162d);
+    border-color: #203657;
+}
+
+.premium-header-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.premium-header-icon {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 22px;
+    color: #fff;
+}
+
+/* আইকনের রঙিন ভ্যারিয়েশন */
+.icon-primary { background: linear-gradient(145deg, #2563eb, #1d4ed8); box-shadow: 0 5px 12px rgba(37,99,235,.2); }
+.icon-success { background: linear-gradient(145deg, #059669, #047857); box-shadow: 0 5px 12px rgba(5,150,105,.2); }
+.icon-danger  { background: linear-gradient(145deg, #e11d48, #be123c); box-shadow: 0 5px 12px rgba(225,29,72,.2); }
+
+.premium-header-text h1 {
+    margin: 0;
+    font-size: 1.45rem; /* ফন্ট সাইজ ছোট করা হলো */
+    font-weight: 800;
+    color: var(--text);
+}
+.premium-header-text p {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-size: .85rem; /* সাবটাইটেল ছোট করা হলো */
+}
+
+@media (max-width: 768px) {
+    .premium-page-header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px;
+        gap: 12px;
+    }
+}

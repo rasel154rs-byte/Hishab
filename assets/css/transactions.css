@@ -1,0 +1,581 @@
+/* =========================================================
+   HISAB - TRANSACTIONS PAGE (LIGHT & DARK MODE OPTIMIZED)
+   ========================================================= */
+
+/* গ্লোবাল ভেরিয়েবল */
+.transaction-page {
+  --tx-primary: var(--primary, #2563eb);
+  --tx-border: var(--border, #e5e7eb);
+  --tx-text: var(--text, #1f2937);
+  --tx-muted: var(--muted, #64748b);
+  --tx-card: var(--card, #ffffff);
+  --tx-table-header: #f1f5f9;
+  color: var(--tx-text);
+}
+
+/* ডার্ক মোডের ভেরিয়েবল */
+[data-theme="dark"] .transaction-page {
+  --tx-table-header: #2b3035;
+  --tx-primary-light: rgba(37, 99, 235, 0.15);
+}
+
+/* Page Heading */
+.transaction-page .transaction-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 4px 0 22px;
+}
+
+.transaction-page .transaction-heading-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 52px;
+  color: #fff;
+  background: var(--tx-primary);
+  border-radius: 14px;
+}
+
+.transaction-page .transaction-heading h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.3;
+  color: var(--tx-text);
+}
+
+.transaction-page .transaction-heading p {
+  margin: 4px 0 0;
+  color: var(--tx-muted);
+  font-size: 0.92rem;
+}
+
+/* Filter Box */
+.transaction-page .transaction-filter-card {
+  padding: 20px;
+  margin-bottom: 22px;
+  border: 1px solid var(--tx-border);
+  border-radius: 15px;
+  background: var(--tx-card) !important;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.045);
+}
+
+[data-theme="dark"] .transaction-page .transaction-filter-card {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-page .transaction-filter {
+  display: grid;
+  grid-template-columns:
+    minmax(190px, 2fr) repeat(3, minmax(105px, 1fr))
+    repeat(2, minmax(135px, 1.2fr)) auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.transaction-page .filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.transaction-page .filter-field label {
+  color: var(--tx-text);
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.transaction-page .filter-field input,
+.transaction-page .filter-field select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 46px;
+  min-width: 0;
+  padding: 0 11px;
+  border: 1px solid var(--tx-border);
+  border-radius: 9px;
+  outline: none;
+  background: var(--tx-card);
+  color: var(--tx-text);
+  font: inherit;
+  font-size: 0.9rem;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+/* ফোকাস ইফেক্ট */
+.transaction-page .filter-field input:focus,
+.transaction-page .filter-field select:focus {
+  border-color: var(--tx-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Filter Buttons */
+.transaction-page .filter-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.transaction-page .filter-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 46px;
+  padding: 0 15px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  white-space: nowrap;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.transaction-page .filter-search-btn {
+  background: var(--tx-primary);
+  color: #fff;
+}
+
+.transaction-page .filter-search-btn:hover {
+  background: var(--primary-hover, #0b5ed7);
+}
+
+.transaction-page .filter-reset-btn {
+  background: var(--bg);
+  border-color: var(--tx-border) !important;
+  color: var(--tx-text);
+}
+
+/* Summary Cards */
+.transaction-page .transaction-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.transaction-page .transaction-stat {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+  min-height: 112px;
+  padding: 19px;
+  border: 1px solid var(--tx-border);
+  border-radius: 15px;
+  background: linear-gradient(
+    145deg,
+    var(--tx-card),
+    rgba(255, 255, 255, 0.02)
+  ) !important;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+[data-theme="dark"] .transaction-page .transaction-stat {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-page .transaction-stat:hover {
+  transform: translateY(-2px);
+}
+
+/* আইকন স্টাইল */
+.transaction-page .stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  border-radius: 50%;
+}
+
+.transaction-page .stat-icon.blue {
+  color: #2563eb;
+  background: #e8f0ff;
+}
+.transaction-page .stat-icon.green {
+  color: #159653;
+  background: #dcfce9;
+}
+.transaction-page .stat-icon.red {
+  color: #dc3545;
+  background: #fee7e9;
+}
+.transaction-page .stat-icon.teal {
+  color: #089879;
+  background: #d9f7ed;
+}
+
+[data-theme="dark"] .transaction-page .stat-icon.blue {
+  background: rgba(37, 99, 235, 0.2);
+  color: #60a5fa;
+}
+[data-theme="dark"] .transaction-page .stat-icon.green {
+  background: rgba(21, 150, 83, 0.2);
+  color: #4ade80;
+}
+[data-theme="dark"] .transaction-page .stat-icon.red {
+  background: rgba(220, 53, 69, 0.2);
+  color: #f87171;
+}
+[data-theme="dark"] .transaction-page .stat-icon.teal {
+  background: rgba(8, 152, 121, 0.2);
+  color: #34d399;
+}
+
+.transaction-page .stat-label {
+  margin-bottom: 5px;
+  color: var(--tx-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.transaction-page .stat-value {
+  overflow-wrap: anywhere;
+  color: var(--tx-text);
+  font-size: 1.35rem;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.transaction-page .stat-value.income {
+  color: #159653;
+}
+.transaction-page .stat-value.expense {
+  color: #dc3545;
+}
+
+[data-theme="dark"] .transaction-page .stat-value.income {
+  color: #4ade80;
+}
+[data-theme="dark"] .transaction-page .stat-value.expense {
+  color: #f87171;
+}
+
+/* Table Panel */
+.transaction-page .transaction-table-card {
+  padding: 20px;
+  border: 1px solid var(--tx-border);
+  border-radius: 15px;
+  background: var(--tx-card) !important;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.045);
+}
+
+[data-theme="dark"] .transaction-page .transaction-table-card {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-page .table-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.transaction-page .table-card-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--tx-text);
+  font-size: 1.3rem;
+}
+
+.transaction-page .transaction-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 20px;
+  background: #e8f0ff;
+  color: #2563eb;
+  font-size: 0.85rem;
+}
+
+[data-theme="dark"] .transaction-page .transaction-count {
+  background: var(--tx-primary-light);
+  color: #60a5fa;
+}
+
+.transaction-page .table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+}
+
+.transaction-page .table-wrap table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+/* টেবিল হেডার */
+.transaction-page .table-wrap thead th {
+  padding: 15px 12px;
+  background: var(--tx-table-header);
+  color: var(--tx-text);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--tx-border);
+}
+
+[data-theme="dark"] .transaction-page .table-wrap thead th {
+  background: #2b3035;
+  color: #e9ecef;
+}
+
+.transaction-page .table-wrap thead th:first-child {
+  border-radius: 9px 0 0 0;
+}
+.transaction-page .table-wrap thead th:last-child {
+  border-radius: 0 9px 0 0;
+}
+
+/* টেবিল বডি */
+.transaction-page .table-wrap tbody td {
+  padding: 14px 12px;
+  color: var(--tx-text);
+  font-size: 0.9rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--tx-border);
+}
+
+.transaction-page .table-wrap tbody tr {
+  transition: background 0.15s ease;
+}
+.transaction-page .table-wrap tbody tr:hover {
+  background: rgba(148, 163, 184, 0.08);
+}
+
+[data-theme="dark"] .transaction-page .table-wrap tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.transaction-page .transaction-note {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--tx-muted) !important;
+}
+
+/* টাইপ ব্যাজ */
+.transaction-page .type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.transaction-page .type-badge.income {
+  color: #12834a;
+  background: #dcfce9;
+}
+.transaction-page .type-badge.expense {
+  color: #c62838;
+  background: #fee7e9;
+}
+.transaction-page .type-badge.transfer {
+  color: #6952b8;
+  background: #eee9ff;
+}
+
+[data-theme="dark"] .transaction-page .type-badge.income {
+  background: rgba(25, 135, 84, 0.2);
+  color: #4ade80;
+}
+[data-theme="dark"] .transaction-page .type-badge.expense {
+  background: rgba(220, 53, 69, 0.2);
+  color: #f87171;
+}
+[data-theme="dark"] .transaction-page .type-badge.transfer {
+  background: rgba(105, 82, 184, 0.2);
+  color: #a78bfa;
+}
+
+/* অ্যামাউন্ট কালার */
+.transaction-page .amount-income {
+  color: #159653 !important;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.transaction-page .amount-expense {
+  color: #dc3545 !important;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.transaction-page .amount-transfer {
+  color: #6952b8 !important;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .transaction-page .amount-income {
+  color: #4ade80 !important;
+}
+[data-theme="dark"] .transaction-page .amount-expense {
+  color: #f87171 !important;
+}
+[data-theme="dark"] .transaction-page .amount-transfer {
+  color: #a78bfa !important;
+}
+
+/* অ্যাকশন বাটন */
+.transaction-page .transaction-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.transaction-page .icon-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    background 0.15s;
+}
+.transaction-page .icon-action:hover {
+  transform: translateY(-1px);
+}
+
+.transaction-page .icon-action.edit {
+  color: #2563eb;
+  background: #e8f0ff;
+}
+.transaction-page .icon-action.delete {
+  color: #dc3545;
+  background: #fee7e9;
+}
+
+[data-theme="dark"] .transaction-page .icon-action.edit {
+  background: rgba(37, 99, 235, 0.2);
+  color: #60a5fa;
+}
+[data-theme="dark"] .transaction-page .icon-action.delete {
+  background: rgba(220, 53, 69, 0.2);
+  color: #f87171;
+}
+
+.transaction-page .icon-action svg {
+  width: 18px;
+  height: 18px;
+}
+
+.transaction-page .transaction-empty {
+  padding: 35px 15px;
+  text-align: center;
+  color: var(--tx-muted);
+}
+
+/* পেজিনেশন */
+.transaction-page .transaction-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+.transaction-page .transaction-pagination .btn {
+  border-radius: 8px;
+}
+
+/* ===== রেসপন্সিভ (Tablet) ===== */
+@media (max-width: 1150px) {
+  .transaction-page .transaction-filter {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .transaction-page .search-field {
+    grid-column: span 2;
+  }
+  .transaction-page .filter-actions {
+    grid-column: span 3;
+  }
+  .transaction-page .transaction-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ===== রেসপন্সিভ (Mobile) ===== */
+@media (max-width: 600px) {
+  .transaction-page .transaction-heading {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .transaction-page .transaction-heading-icon {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+  .transaction-page .transaction-heading h1 {
+    font-size: 1.4rem;
+  }
+  .transaction-page .transaction-filter-card,
+  .transaction-page .transaction-table-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+  .transaction-page .transaction-filter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+  .transaction-page .search-field,
+  .transaction-page .filter-actions {
+    grid-column: span 2;
+  }
+  .transaction-page .filter-actions .btn {
+    flex: 1;
+  }
+  .transaction-page .transaction-summary {
+    gap: 10px;
+  }
+  .transaction-page .transaction-stat {
+    min-height: 94px;
+    padding: 12px;
+    gap: 9px;
+  }
+  .transaction-page .stat-icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+  .transaction-page .stat-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+  .transaction-page .stat-label {
+    font-size: 0.76rem;
+  }
+  .transaction-page .stat-value {
+    font-size: 1rem;
+  }
+  .transaction-page .table-card-heading h2 {
+    font-size: 1.05rem;
+  }
+}
